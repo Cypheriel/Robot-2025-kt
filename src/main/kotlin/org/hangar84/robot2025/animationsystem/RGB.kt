@@ -3,7 +3,11 @@ package org.hangar84.robot2025.animationsystem
 /**
  * A simple data class representing the 8-bit red, green, and blue components of an LED color.
  */
-data class RGB(val r: Int, val g: Int, val b: Int) {
+data class RGB(
+    val r: Int,
+    val g: Int,
+    val b: Int,
+) {
     companion object {
         val BLACK = RGB(0, 0, 0)
         val WHITE = RGB(100, 100, 100)

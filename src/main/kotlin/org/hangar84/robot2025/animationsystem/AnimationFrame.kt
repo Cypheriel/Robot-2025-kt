@@ -9,7 +9,11 @@ import edu.wpi.first.wpilibj.AddressableLEDBuffer
  * @param frameGap The duration of the gap between this frame and the next in seconds. Defaults to `0.0`.
  * @see ColorMap
  */
-open class AnimationFrame(buffer: List<ColorMap>, val frameLength: Double, val frameGap: Double = 0.0) {
+open class AnimationFrame(
+    buffer: List<ColorMap>,
+    val frameLength: Double,
+    val frameGap: Double = 0.0,
+) {
     val ledBuffer: AddressableLEDBuffer = AddressableLEDBuffer(ZiaComponents.LED_COUNT)
 
     init {
