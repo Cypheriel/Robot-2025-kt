@@ -1,6 +1,5 @@
 package org.hangar84.robot2025.swerve
 
-import com.revrobotics.spark.SparkBase.ControlType
 import com.revrobotics.spark.SparkBase.PersistMode
 import com.revrobotics.spark.SparkBase.ResetMode
 import com.revrobotics.spark.SparkLowLevel.MotorType
@@ -20,18 +19,15 @@ class MAXSwerveModule(
     private val drivingController = SparkMax(drivingControllerID, MotorType.kBrushless)
     private val turningController = SparkMax(turningControllerID, MotorType.kBrushless)
 
-    var desiredState = SwerveModuleState(0.0, Rotation2d(turningController.encoder.position))
+    var desiredState = SwerveModuleState(0.0, Rotation2d())
         set(value) {
             val correctedDesiredState =
                 SwerveModuleState(
-                    desiredState.speedMetersPerSecond,
-                    desiredState.angle + Rotation2d.fromDegrees(chassisAngularOffset),
+                    value.speedMetersPerSecond,
+                    value.angle + Rotation2d.fromDegrees(chassisAngularOffset),
                 )
 
             correctedDesiredState.optimize(Rotation2d(turningController.encoder.position))
-
-            drivingController.closedLoopController.setReference(correctedDesiredState.speedMetersPerSecond, ControlType.kVelocity)
-            turningController.closedLoopController.setReference(correctedDesiredState.angle.radians, ControlType.kPosition)
 
             field = value
         }
@@ -54,10 +50,6 @@ class MAXSwerveModule(
         drivingController.configure(drivingConfig, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters)
         turningController.configure(turningConfig, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters)
 
-        resetEncoders()
-    }
-
-    fun resetEncoders() {
         drivingController.encoder.position = 0.0
     }
 }

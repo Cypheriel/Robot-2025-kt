@@ -8,30 +8,23 @@ import edu.wpi.first.wpilibj.util.WPILibVersion
 import edu.wpi.first.wpilibj2.command.Command
 import edu.wpi.first.wpilibj2.command.CommandScheduler
 
-
 object Robot : TimedRobot() {
-
     private var autonomousCommand: Command? = null
-
 
     override fun robotInit() {
         HAL.report(tResourceType.kResourceType_Language, tInstances.kLanguage_Kotlin, 0, WPILibVersion.Version)
 
-        // Reference the ``RobotContainer` object to ensure that the static initializer is run
         RobotContainer
     }
-
 
     override fun robotPeriodic() {
         CommandScheduler.getInstance().run()
     }
 
     override fun disabledInit() {
-
     }
 
     override fun disabledPeriodic() {
-
     }
 
     override fun autonomousInit() {
@@ -39,7 +32,6 @@ object Robot : TimedRobot() {
     }
 
     override fun autonomousPeriodic() {
-
     }
 
     override fun teleopInit() {
@@ -47,7 +39,6 @@ object Robot : TimedRobot() {
     }
 
     override fun teleopPeriodic() {
-
     }
 
     override fun testInit() {
@@ -55,14 +46,11 @@ object Robot : TimedRobot() {
     }
 
     override fun testPeriodic() {
-
     }
 
     override fun simulationInit() {
-
     }
 
     override fun simulationPeriodic() {
-
     }
 }
