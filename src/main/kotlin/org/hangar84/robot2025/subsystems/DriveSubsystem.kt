@@ -31,7 +31,8 @@ object DriveSubsystem : Subsystem {
     // - MAXSwerve modules -
     private val frontRightModule =
         MAXSwerveModule(1, 2, -Math.PI / 2, SwerveConfigs.drivingConfig, SwerveConfigs.turningConfig)
-    private val frontLeftModule = MAXSwerveModule(3, 4, 0.0, SwerveConfigs.drivingConfig, SwerveConfigs.turningConfig)
+    private val frontLeftModule =
+        MAXSwerveModule(3, 4, 0.0, SwerveConfigs.drivingConfig, SwerveConfigs.turningConfig)
     private val backRightModule =
         MAXSwerveModule(5, 6, Math.PI, SwerveConfigs.drivingConfig, SwerveConfigs.turningConfig)
     private val backLeftModule =
@@ -43,7 +44,7 @@ object DriveSubsystem : Subsystem {
         get() = allModules.map { it.position }.toTypedArray()
 
     // - Sensors -
-    private val imu = ADIS16470_IMU() // TODO: Verify correct model of IMU
+    private val imu = ADIS16470_IMU()
     private val rotation
         get() = Rotation2d.fromDegrees(imu.getAngle(IMUAxis.kZ))
 

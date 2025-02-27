@@ -6,7 +6,7 @@ import edu.wpi.first.wpilibj2.command.button.CommandXboxController
 import org.hangar84.robot2025.subsystems.DriveSubsystem
 
 object RobotContainer {
-    private const val JOYSTICK_DEADBAND = 0.1
+    private const val JOYSTICK_DEADBAND = 0.05
 
     private val controller = CommandXboxController(0)
 
