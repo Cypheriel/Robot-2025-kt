@@ -4,7 +4,7 @@ import com.revrobotics.spark.config.ClosedLoopConfig.FeedbackSensor
 import com.revrobotics.spark.config.SparkBaseConfig.IdleMode
 import com.revrobotics.spark.config.SparkMaxConfig
 
-object SwerveConfigs {
+data object SwerveConfigs {
     private const val DRIVE_PINION_TEETH = 13
     private const val NEO_FREE_SPEED_RPM = 5676
     private const val WHEEL_DIAMETER = 0.0762
